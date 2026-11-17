@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,9 +39,7 @@ body {
 body.no-scroll {overflow:hidden;}
 
 button,a {font:inherit;}
-
 button {cursor:pointer;}
-
 img {max-width:100%;}
 
 /* WELCOME SCREEN */
@@ -196,16 +195,18 @@ nav a:hover {color:var(--gold);}
 
 .hero-content {max-width:570px;}
 
+/* REDUCED LOGO SIZE */
+
 .hero-logo {
-  width:145px;
-  height:145px;
+  width:95px;
+  height:95px;
   border-radius:50%;
-  border:4px solid var(--gold);
-  padding:5px;
-  margin-bottom:25px;
+  border:3px solid var(--gold);
+  padding:4px;
+  margin-bottom:22px;
   overflow:hidden;
   background:var(--black);
-  box-shadow:0 0 25px #d4af3755;
+  box-shadow:0 0 20px #d4af3755;
 }
 
 .hero-logo img {
@@ -302,7 +303,6 @@ nav a:hover {color:var(--gold);}
 /* CATALOGUE */
 
 .catalogue-page {display:none;}
-
 .catalogue-page.active {display:block;}
 
 .catalogue-banner {
@@ -585,7 +585,7 @@ footer h2 {
   .cart-button {padding:9px 11px;font-size:12px;}
 
   .hero {min-height:560px;padding:45px 6%;}
-  .hero-logo {width:120px;height:120px;}
+  .hero-logo {width:78px;height:78px;}
   .hero h1 {font-size:43px;}
 
   .section {padding:55px 5%;}
@@ -617,7 +617,7 @@ footer h2 {
 
 <div class="welcome-screen" id="welcome-screen">
   <img
-    src="images/welcome-delvin.png"
+    src="images/welcome page.jpg"
     alt="Welcome to Delvin Glamour"
     id="welcome-image"
   >
@@ -676,34 +676,34 @@ footer h2 {
     <div class="section-heading">
       <small>DISCOVER YOUR BEAUTY</small>
       <h2>Shop Our Collections</h2>
-      <p>Choose a category to explore our complete collection.</p>
+      <p>Choose a category to explore our collection.</p>
     </div>
 
     <div class="categories">
 
       <a href="#wigs" class="category" onclick="openCategory('wigs');return false;">
-        <img src="images/bone-straight.jpg" alt="Wigs collection">
+        <img src="images/wigs1.jpg" alt="Wigs collection">
         <div class="category-content">
           <h3>Wigs</h3>
-          <p>Explore our 10 beautiful wig styles.</p>
+          <p>Discover beautiful hairstyles.</p>
           <span class="category-link">VIEW WIGS →</span>
         </div>
       </a>
 
       <a href="#nails" class="category" onclick="openCategory('nails');return false;">
-        <img src="images/french-tips.jpg" alt="Nails collection">
+        <img src="images/nails1.jpg" alt="Nails collection">
         <div class="category-content">
           <h3>Nails</h3>
-          <p>Explore our 10 beautiful nail designs.</p>
+          <p>Discover elegant nail designs.</p>
           <span class="category-link">VIEW NAILS →</span>
         </div>
       </a>
 
       <a href="#lashes" class="category" onclick="openCategory('lashes');return false;">
-        <img src="images/natural-lashes.jpg" alt="Lashes collection">
+        <img src="images/lashes1.jpg" alt="Lashes collection">
         <div class="category-content">
           <h3>Lashes</h3>
-          <p>Explore our 10 beautiful lash styles.</p>
+          <p>Discover beautiful lash styles.</p>
           <span class="category-link">VIEW LASHES →</span>
         </div>
       </a>
@@ -739,7 +739,7 @@ footer h2 {
   <div class="catalogue-banner">
     <small>DELVIN GLAMOUR COLLECTION</small>
     <h1>Luxury Wigs</h1>
-    <p>Explore our collection of 10 beautiful wig styles.</p>
+    <p>Discover our beautiful wig collection.</p>
     <a href="#" class="back-home" onclick="showHome();return false;">← BACK TO HOMEPAGE</a>
   </div>
   <div class="section">
@@ -753,7 +753,7 @@ footer h2 {
   <div class="catalogue-banner">
     <small>DELVIN GLAMOUR COLLECTION</small>
     <h1>Beautiful Nails</h1>
-    <p>Explore our collection of 10 elegant nail designs.</p>
+    <p>Discover our elegant nail collection.</p>
     <a href="#" class="back-home" onclick="showHome();return false;">← BACK TO HOMEPAGE</a>
   </div>
   <div class="section">
@@ -767,7 +767,7 @@ footer h2 {
   <div class="catalogue-banner">
     <small>DELVIN GLAMOUR COLLECTION</small>
     <h1>Premium Lashes</h1>
-    <p>Explore our collection of 10 beautiful lash styles.</p>
+    <p>Discover our premium lash collection.</p>
     <a href="#" class="back-home" onclick="showHome();return false;">← BACK TO HOMEPAGE</a>
   </div>
   <div class="section">
@@ -811,7 +811,8 @@ footer h2 {
 const WHATSAPP_NUMBER = "2348107171050";
 
 /* PRODUCT CATALOGUES
-   Image filenames must match the files uploaded to images/.
+   Every image is stored inside the images folder.
+   Each filename is written individually.
 */
 
 const catalogues = {
@@ -821,71 +822,64 @@ const catalogues = {
       id:1,
       name:"Bone Straight Lace Front Wig",
       description:"Sleek, smooth and glossy straight hair for a polished and elegant look.",
-      price:95000,
-      image:"images/bone-straight.jpg"
+      price:85000,
+      image:"images/wigs1.jpg"
     },
     {
       id:2,
       name:"Body Wave Lace Front Wig",
       description:"Beautiful loose S-shaped waves with bounce, softness and volume.",
       price:75000,
-      image:"images/body-wave.jpg"
+      image:"images/wigs2.jpg"
     },
     {
       id:3,
       name:"Blunt Cut Bob Wig",
       description:"A stylish short bob with sharp, even ends for a neat and modern appearance.",
       price:65000,
-      image:"images/blunt-bob.jpg"
+      image:"images/wigs3.jpg"
     },
     {
       id:4,
       name:"Deep Wave Lace Front Wig",
       description:"Defined deep waves with beautiful fullness and glamorous volume.",
-      price:78000,
-      image:"images/deep-wave.jpg"
+      price:80000,
+      image:"images/wigs4.jpg"
     },
     {
       id:5,
       name:"Jerry Curl Lace Front Wig",
       description:"Beautiful springy curls for a full, lively and glamorous hairstyle.",
-      price:120000,
-      image:"images/jerry-curl.jpg"
+      price:90000,
+      image:"images/wigs5.jpg"
     },
     {
       id:6,
       name:"Water Wave Wig",
       description:"Soft, flowing water waves with a natural tousled appearance.",
-      price:105000,
-      image:"images/water-wave.jpg"
+      price:70000,
+      image:"images/wigs6.jpg"
     },
     {
       id:7,
       name:"Honey Blonde Highlight Wig",
       description:"Beautiful honey-blonde highlights blended into a dark base for extra dimension.",
       price:85000,
-      image:"images/honey-blonde.jpg"
+      image:"images/wigs7.jpg"
     },
     {
       id:8,
       name:"Pixie Cut Wig",
       description:"A chic short hairstyle with a stylish cropped and layered finish.",
-      price:56000,
-      image:"images/pixie-cut.jpg"
+      price:65000,
+      image:"images/wigs8.jpg"
     },
     {
       id:9,
       name:"Afro Kinky Curly Headband Wig",
       description:"Beautiful tight curly texture with an easy headband style.",
-      price:90000,
-      image:"images/afro-kinky.jpg"
-    },
-    {
-      id:10,
-      name:"Full Lace Box Braided Wig",
-      description:"A ready-to-wear braided look for a stylish and beautiful appearance.",
-      price:59000,
-      image:"images/box-braided.jpg"
+      price:80000,
+      image:"images/wigs9.jpg"
     }
   ],
 
@@ -894,71 +888,71 @@ const catalogues = {
       id:11,
       name:"French Tips",
       description:"Classic French-tip nails for a clean, timeless and elegant finish.",
-      price:12000,
-      image:"images/french-tips.jpg"
+      price:9000,
+      image:"images/nails1.jpg"
     },
     {
       id:12,
       name:"Nude Elegance",
       description:"Beautiful nude-toned nails for a simple and sophisticated look.",
-      price:12000,
-      image:"images/nude-elegance.jpg"
+      price:7000,
+      image:"images/nails2.jpg"
     },
     {
       id:13,
       name:"Pink Glam",
       description:"Pretty pink nail designs for a soft and feminine appearance.",
-      price:14000,
-      image:"images/pink-glam.jpg"
+      price:10000,
+      image:"images/nails3.jpg"
     },
     {
       id:14,
       name:"Chrome Nails",
       description:"Shiny metallic-inspired nails with a modern finish.",
-      price:15000,
-      image:"images/chrome-nails.jpg"
+      price:11000,
+      image:"images/nails4.jpg"
     },
     {
       id:15,
       name:"Glitter Nails",
       description:"Sparkling nail designs for a glamorous and eye-catching look.",
-      price:15000,
-      image:"images/glitter-nails.jpg"
+      price:8000,
+      image:"images/nails5.jpg"
     },
     {
       id:16,
       name:"Marble Nails",
       description:"Elegant marble-inspired patterns with a beautiful artistic finish.",
-      price:16000,
-      image:"images/marble-nails.jpg"
+      price:9000,
+      image:"images/nails6.jpg"
     },
     {
       id:17,
       name:"Coffin Nails",
       description:"Stylish coffin-shaped nails for a bold and fashionable look.",
-      price:14000,
-      image:"images/coffin-nails.jpg"
+      price:7500,
+      image:"images/nails7.jpg"
     },
     {
       id:18,
       name:"Almond Nails",
       description:"Elegant almond-shaped nails with a graceful tapered finish.",
-      price:14000,
-      image:"images/almond-nails.jpg"
+      price:8500,
+      image:"images/nails8.jpg"
     },
     {
       id:19,
       name:"Floral Nails",
       description:"Beautiful floral-inspired nail art for a delicate finish.",
-      price:17000,
-      image:"images/floral-nails.jpg"
+      price:10500,
+      image:"images/nails9.jpg"
     },
     {
       id:20,
       name:"Luxury Rhinestone Nails",
       description:"Decorative nail designs featuring glamorous stone details.",
-      price:18000,
-      image:"images/rhinestone-nails.jpg"
+      price:11000,
+      image:"images/nails10.jpg"
     }
   ],
 
@@ -968,70 +962,70 @@ const catalogues = {
       name:"Natural Lashes",
       description:"Soft, natural-looking lashes for an effortlessly beautiful appearance.",
       price:5000,
-      image:"images/natural-lashes.jpg"
+      image:"images/lashes1.jpg"
     },
     {
       id:22,
       name:"Wispy Lashes",
       description:"Wispy lash styling for a soft, fluttery and defined finish.",
       price:6000,
-      image:"images/wispy-lashes.jpg"
+      image:"images/lashes2.jpg"
     },
     {
       id:23,
       name:"Volume Lashes",
       description:"Fuller-looking lashes for added definition and volume.",
       price:7000,
-      image:"images/volume-lashes.jpg"
+      image:"images/lashes3.jpg"
     },
     {
       id:24,
       name:"Mega Volume Lashes",
       description:"A bold, full lash look for dramatic eye definition.",
-      price:9000,
-      image:"images/mega-volume.jpg"
+      price:10000,
+      image:"images/lashes4.jpg"
     },
     {
       id:25,
       name:"Cat Eye Lashes",
       description:"An elongated outer-corner style for a lifted eye appearance.",
       price:7000,
-      image:"images/cat-eye-lashes.jpg"
+      image:"images/lashes5.jpg"
     },
     {
       id:26,
       name:"Doll Eye Lashes",
       description:"A rounded lash style that gives the eyes a wide, open appearance.",
-      price:7000,
-      image:"images/doll-eye-lashes.jpg"
+      price:8000,
+      image:"images/lashes6.jpg"
     },
     {
       id:27,
       name:"Hybrid Lashes",
       description:"A combination of classic and fuller lash styling.",
-      price:8000,
-      image:"images/hybrid-lashes.jpg"
+      price:8500,
+      image:"images/lashes7.jpg"
     },
     {
       id:28,
       name:"Dramatic Lashes",
       description:"Statement lashes for a bold and glamorous appearance.",
-      price:10000,
-      image:"images/dramatic-lashes.jpg"
+      price:9500,
+      image:"images/lashes8.jpg"
     },
     {
       id:29,
       name:"Mink Lashes",
       description:"Soft-looking lashes with a beautifully luxurious finish.",
-      price:10000,
-      image:"images/mink-lashes.jpg"
+      price:9000,
+      image:"images/lashes9.jpg"
     },
     {
       id:30,
       name:"3D Lashes",
       description:"Multi-dimensional lash styling for a fuller-looking effect.",
-      price:12000,
-      image:"images/3d-lashes.jpg"
+      price:7500,
+      image:"images/lashes10.jpg"
     }
   ]
 
@@ -1104,7 +1098,7 @@ function displayCatalogue(category) {
 
 }
 
-/* SHOW ALL THREE CATALOGUES */
+/* INITIALIZE CATALOGUES */
 
 function initializeCatalogues() {
   displayCatalogue("wigs");
