@@ -1,11 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#171012">
-<title>DELVIN GLAMOUR | Luxury Fashion</title>
-<meta name="description" content="Discover stylish fashion, clothing and accessories at DELVIN GLAMOUR. Shop your favourite looks.">
+
+<title>DELVIN GLAMOUR | Luxury Hair & Wigs</title>
+<meta name="description" content="Discover beautiful luxury human hair wigs, bone straight, body wave, deep wave, curly wigs and hair extensions at Delvin Glamour.">
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
@@ -23,6 +25,8 @@
   padding:0;
   box-sizing:border-box;
 }
+
+html {scroll-behavior:smooth;}
 
 body {
   font-family:'DM Sans',sans-serif;
@@ -62,6 +66,8 @@ nav a {
   font-size:13px;
 }
 
+nav a:hover {color:var(--gold);}
+
 .cart-button {
   background:var(--red);
   border:0;
@@ -78,8 +84,8 @@ nav a {
   padding:70px 8%;
   background:
     linear-gradient(90deg,rgba(15,8,10,.88),rgba(15,8,10,.2)),
-    url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85')
-    center/cover;
+    url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1800&q=85')
+    center 35%/cover;
   color:white;
 }
 
@@ -100,7 +106,7 @@ nav a {
 
 .hero p {
   line-height:1.8;
-  max-width:420px;
+  max-width:440px;
   color:#eee;
 }
 
@@ -117,9 +123,9 @@ nav a {
   font-weight:bold;
 }
 
-.section {
-  padding:75px 7%;
-}
+.primary-btn:hover {background:#78182a;}
+
+.section {padding:75px 7%;}
 
 .section-heading {
   text-align:center;
@@ -138,6 +144,11 @@ nav a {
   margin-top:10px;
 }
 
+.section-heading p {
+  margin-top:12px;
+  color:#777;
+}
+
 .categories {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -145,10 +156,12 @@ nav a {
 }
 
 .category {
-  height:260px;
+  height:300px;
   position:relative;
   overflow:hidden;
   background:#ddd;
+  display:block;
+  text-decoration:none;
 }
 
 .category img {
@@ -160,14 +173,21 @@ nav a {
 
 .category:hover img {transform:scale(1.06);}
 
+.category:after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(transparent,rgba(0,0,0,.65));
+}
+
 .category h3 {
   position:absolute;
-  bottom:20px;
+  bottom:22px;
   left:20px;
   color:white;
   font-family:'Playfair Display',serif;
   font-size:26px;
-  text-shadow:0 2px 8px #000;
+  z-index:2;
 }
 
 .products {
@@ -180,12 +200,19 @@ nav a {
   background:white;
   padding-bottom:20px;
   overflow:hidden;
+  transition:.3s;
+}
+
+.product:hover {
+  transform:translateY(-5px);
+  box-shadow:0 10px 25px #0001;
 }
 
 .product img {
   width:100%;
   height:310px;
   object-fit:cover;
+  background:#eee;
 }
 
 .product-info {padding:18px;}
@@ -195,10 +222,18 @@ nav a {
   font-size:20px;
 }
 
+.product-info p {
+  color:#777;
+  font-size:13px;
+  margin-top:7px;
+  line-height:1.6;
+}
+
 .price {
   color:var(--red);
   font-weight:bold;
-  margin:10px 0;
+  margin:12px 0;
+  font-size:17px;
 }
 
 .add-btn {
@@ -220,11 +255,13 @@ nav a {
 }
 
 .about p {
-  max-width:650px;
+  max-width:680px;
   margin:20px auto;
   line-height:1.9;
   color:#ddd;
 }
+
+.about .section-heading small {color:var(--gold);}
 
 footer {
   background:#100b0d;
@@ -309,12 +346,13 @@ footer span {color:var(--gold);}
 
 @media(max-width:750px) {
   header {padding:15px 5%;}
-  .logo {font-size:20px;}
+  .logo {font-size:19px;}
   nav {gap:12px;}
   nav a {font-size:11px;}
   .hero {min-height:500px;padding:55px 7%;}
-  .categories {grid-template-columns:1fr;}
-  .category {height:230px;}
+  .categories {grid-template-columns:repeat(2,1fr);gap:12px;}
+  .category {height:220px;}
+  .category h3 {font-size:20px;left:12px;}
   .products {grid-template-columns:repeat(2,1fr);gap:12px;}
   .product img {height:210px;}
   .product-info {padding:12px;}
@@ -325,6 +363,7 @@ footer span {color:var(--gold);}
 @media(max-width:380px) {
   .products {grid-template-columns:1fr;}
   nav a {display:none;}
+  .categories {grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -333,136 +372,214 @@ footer span {color:var(--gold);}
 
 <header>
   <div class="logo">DELVIN <span>GLAMOUR</span></div>
+
   <nav>
     <a href="#home">Home</a>
+    <a href="#collections">Collections</a>
     <a href="#shop">Shop</a>
     <a href="#about">About</a>
+
     <button class="cart-button" onclick="toggleCart()">
       Cart (<span id="cart-count">0</span>)
     </button>
   </nav>
 </header>
 
+<!-- HERO SECTION -->
+
 <section class="hero" id="home">
   <div class="hero-content">
     <small>WELCOME TO DELVIN GLAMOUR</small>
-    <h1>Style That Speaks. Elegance That Lasts.</h1>
-    <p>Discover beautiful fashion pieces designed to make every moment special. Express your confidence with style.</p>
-    <a href="#shop" class="primary-btn">SHOP COLLECTION</a>
+
+    <h1>Luxury Hair. Timeless Beauty.</h1>
+
+    <p>
+      Discover beautiful wigs and premium hair extensions
+      designed to enhance your confidence, beauty and elegance.
+      Your perfect hair transformation starts here.
+    </p>
+
+    <a href="#shop" class="primary-btn">SHOP OUR WIGS</a>
   </div>
 </section>
 
-<section class="section">
+<!-- HAIR COLLECTIONS -->
+
+<section class="section" id="collections">
+
   <div class="section-heading">
-    <small>EXPLORE OUR STYLE</small>
-    <h2>Shop By Category</h2>
+    <small>DISCOVER YOUR BEAUTY</small>
+    <h2>Our Hair Collections</h2>
   </div>
 
   <div class="categories">
-    <div class="category">
-      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80" alt="Women's fashion">
-      <h3>Women's Fashion</h3>
-    </div>
-    <div class="category">
-      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80" alt="Fashion collection">
-      <h3>New Arrivals</h3>
-    </div>
-    <div class="category">
-      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=80" alt="Fashion accessories">
-      <h3>Accessories</h3>
-    </div>
+
+    <a href="#shop" class="category">
+      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=80" alt="Straight hair inspiration">
+      <h3>Bone Straight</h3>
+    </a>
+
+    <a href="#shop" class="category">
+      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="Body wave hair inspiration">
+      <h3>Body Wave</h3>
+    </a>
+
+    <a href="#shop" class="category">
+      <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=80" alt="Deep wave hair inspiration">
+      <h3>Deep Wave</h3>
+    </a>
+
+    <a href="#shop" class="category">
+      <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=700&q=80" alt="Curly hair inspiration">
+      <h3>Curly Wigs</h3>
+    </a>
+
+    <a href="#shop" class="category">
+      <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=700&q=80" alt="Lace front wig inspiration">
+      <h3>Lace Frontals</h3>
+    </a>
+
+    <a href="#shop" class="category">
+      <img src="https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?auto=format&fit=crop&w=700&q=80" alt="Hair beauty inspiration">
+      <h3>Hair Bundles</h3>
+    </a>
+
   </div>
 </section>
 
+<!-- PRODUCTS -->
+
 <section class="section" id="shop">
+
   <div class="section-heading">
-    <small>OUR COLLECTION</small>
-    <h2>Featured Products</h2>
-    <p style="margin-top:12px;color:#777;">Find your next favourite look.</p>
+    <small>PREMIUM HAIR COLLECTION</small>
+    <h2>Featured Wigs & Hair</h2>
+    <p>Find the perfect hair to express your beauty.</p>
   </div>
 
   <div class="products" id="product-list"></div>
+
 </section>
 
+<!-- ABOUT -->
+
 <section class="section about" id="about">
+
   <div class="section-heading">
     <small>OUR STORY</small>
     <h2>About Delvin Glamour</h2>
   </div>
+
   <p>
-    DELVIN GLAMOUR is about confidence, beauty and timeless style.
-    We believe fashion is more than what you wear; it is how you express yourself.
-    Discover your style and let your elegance shine.
+    DELVIN GLAMOUR is dedicated to beauty, confidence
+    and timeless elegance through premium wigs and hair
+    extensions.
+
+    We believe that beautiful hair is more than just a style.
+    It is an expression of confidence, personality and beauty.
+
+    Whether you love bone straight, body wave, deep wave
+    or curly hairstyles, we are here to help you discover
+    your perfect look.
   </p>
-  <a href="#shop" class="primary-btn">EXPLORE COLLECTION</a>
+
+  <a href="#shop" class="primary-btn">EXPLORE OUR HAIR</a>
+
 </section>
 
+<!-- FOOTER -->
+
 <footer>
+
   <h2 style="font-family:'Playfair Display',serif;margin-bottom:10px;">
     DELVIN <span>GLAMOUR</span>
   </h2>
-  <p>Elegance in Every Detail.</p>
-  <p style="margin-top:15px;">© 2026 DELVIN GLAMOUR. All rights reserved.</p>
+
+  <p>Luxury Hair. Timeless Beauty.</p>
+
+  <p style="margin-top:15px;">
+    © 2026 DELVIN GLAMOUR. All rights reserved.
+  </p>
+
 </footer>
+
+<!-- CART -->
 
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
 <div class="cart-panel" id="cart-panel">
+
   <div class="cart-header">
     <h2>Your Shopping Cart</h2>
     <button class="close-btn" onclick="toggleCart()">×</button>
   </div>
 
   <div id="cart-items"></div>
+
   <div class="total" id="cart-total">Total: ₦0</div>
 
   <button class="checkout" onclick="checkout()">
     ORDER VIA WHATSAPP
   </button>
+
 </div>
 
 <script>
-const WHATSAPP_NUMBER = "234XXXXXXXXXX";
-// Replace with your WhatsApp number, including country code.
-// Example: 2348012345678
 
+// ADD YOUR WHATSAPP NUMBER HERE
+const WHATSAPP_NUMBER = "234XXXXXXXXXX";
+
+// SAMPLE HAIR PRODUCTS
 const products = [
+
   {
     id:1,
-    name:"Elegant Women's Outfit",
-    price:25000,
-    image:"https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=700&q=80"
+    name:"Premium Bone Straight Wig",
+    description:"Elegant silky straight hair for a flawless look.",
+    price:85000,
+    image:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=80"
   },
+
   {
     id:2,
-    name:"Luxury Fashion Dress",
-    price:32000,
-    image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=80"
+    name:"Luxury Body Wave Wig",
+    description:"Beautiful soft waves for an elegant appearance.",
+    price:95000,
+    image:"https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80"
   },
+
   {
     id:3,
-    name:"Classic Fashion Look",
-    price:18000,
-    image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80"
+    name:"Deep Wave Human Hair",
+    description:"Beautiful defined waves with a luxurious finish.",
+    price:105000,
+    image:"https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=80"
   },
+
   {
     id:4,
-    name:"Stylish Handbag",
-    price:22000,
-    image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80"
+    name:"Luxury Curly Wig",
+    description:"Full and beautiful curls for a stunning look.",
+    price:90000,
+    image:"https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=700&q=80"
   },
+
   {
     id:5,
-    name:"Modern Ladies Outfit",
-    price:28000,
-    image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80"
+    name:"13x4 Lace Front Wig",
+    description:"A versatile lace front style for natural-looking styling.",
+    price:120000,
+    image:"https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=700&q=80"
   },
+
   {
     id:6,
-    name:"Elegant Accessories",
-    price:12000,
-    image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80"
+    name:"Premium Human Hair Bundles",
+    description:"Quality hair bundles for your favourite hairstyles.",
+    price:75000,
+    image:"https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?auto=format&fit=crop&w=700&q=80"
   }
+
 ];
 
 let cart = [];
@@ -471,25 +588,51 @@ function formatPrice(amount) {
   return "₦" + amount.toLocaleString("en-NG");
 }
 
+// DISPLAY PRODUCTS
+
 function displayProducts() {
+
   const list = document.getElementById("product-list");
 
   list.innerHTML = products.map(product => `
+
     <div class="product">
-      <img src="${product.image}" alt="${product.name}" loading="lazy">
+
+      <img
+        src="${product.image}"
+        alt="${product.name}"
+        loading="lazy"
+      >
+
       <div class="product-info">
+
         <h3>${product.name}</h3>
-        <div class="price">${formatPrice(product.price)}</div>
-        <button class="add-btn" onclick="addToCart(${product.id})">
+
+        <p>${product.description}</p>
+
+        <div class="price">
+          ${formatPrice(product.price)}
+        </div>
+
+        <button class="add-btn"
+          onclick="addToCart(${product.id})">
           ADD TO CART
         </button>
+
       </div>
+
     </div>
+
   `).join("");
+
 }
 
+// ADD TO CART
+
 function addToCart(id) {
+
   const product = products.find(p => p.id === id);
+
   const existing = cart.find(item => item.id === id);
 
   if (existing) {
@@ -499,22 +642,36 @@ function addToCart(id) {
   }
 
   updateCart();
+
 }
 
+// UPDATE CART
+
 function updateCart() {
-  const count = cart.reduce((sum,item) => sum + item.quantity,0);
+
+  const count = cart.reduce(
+    (sum,item) => sum + item.quantity,0
+  );
 
   document.getElementById("cart-count").textContent = count;
 
   document.getElementById("cart-items").innerHTML =
+
     cart.length ? cart.map(item => `
+
       <div class="cart-item">
+
         <div>
           <strong>${item.name}</strong><br>
           ${formatPrice(item.price)} × ${item.quantity}
         </div>
-        <button onclick="removeItem(${item.id})">Remove</button>
+
+        <button onclick="removeItem(${item.id})">
+          Remove
+        </button>
+
       </div>
+
     `).join("") : "<p>Your cart is empty.</p>";
 
   const total = cart.reduce(
@@ -523,19 +680,33 @@ function updateCart() {
 
   document.getElementById("cart-total").textContent =
     "Total: " + formatPrice(total);
+
 }
+
+// REMOVE PRODUCT
 
 function removeItem(id) {
+
   cart = cart.filter(item => item.id !== id);
+
   updateCart();
+
 }
+
+// OPEN AND CLOSE CART
 
 function toggleCart() {
+
   document.getElementById("cart-panel").classList.toggle("open");
+
   document.getElementById("overlay").classList.toggle("show");
+
 }
 
+// WHATSAPP CHECKOUT
+
 function checkout() {
+
   if (!cart.length) {
     alert("Your cart is empty. Please add a product first.");
     return;
@@ -546,10 +717,14 @@ function checkout() {
     return;
   }
 
-  let message = "Hello DELVIN GLAMOUR! I want to place an order:\n\n";
+  let message =
+    "Hello DELVIN GLAMOUR! I want to place an order:\n\n";
 
   cart.forEach(item => {
-    message += `${item.name} x ${item.quantity} - ${formatPrice(item.price * item.quantity)}\n`;
+
+    message +=
+      `${item.name} x ${item.quantity} - ${formatPrice(item.price * item.quantity)}\n`;
+
   });
 
   const total = cart.reduce(
@@ -557,16 +732,23 @@ function checkout() {
   );
 
   message += `\nTotal: ${formatPrice(total)}`;
-  message += "\n\nPlease provide payment and delivery details.";
 
-  const url = "https://wa.me/" + WHATSAPP_NUMBER +
+  message +=
+    "\n\nPlease provide payment and delivery details.";
+
+  const url =
+    "https://wa.me/" + WHATSAPP_NUMBER +
     "?text=" + encodeURIComponent(message);
 
   window.open(url,"_blank");
+
 }
+
+// INITIALIZE WEBSITE
 
 displayProducts();
 updateCart();
+
 </script>
 
 </body>
