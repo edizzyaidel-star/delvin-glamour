@@ -1,23 +1,24 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#171012">
+<meta name="theme-color" content="#080808">
 
-<title>DELVIN GLAMOUR | Luxury Hair & Wigs</title>
-<meta name="description" content="Discover beautiful luxury human hair wigs and premium hair extensions at Delvin Glamour.">
+<title>DELVIN GLAMOUR | Luxury Beauty Store</title>
+<meta name="description" content="Discover elegant wigs, beautiful nails and premium lashes at Delvin Glamour. Your beauty, our concern.">
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --black:#171012;
-  --red:#9f2438;
-  --cream:#f8f3ef;
+  --black:#080808;
+  --black-soft:#171313;
+  --gold:#D4AF37;
+  --burgundy:#641E35;
+  --cream:#F5EBDD;
   --white:#fff;
-  --gold:#c6a477;
+  --muted:#777;
 }
 
 * {
@@ -34,29 +35,87 @@ body {
   color:var(--black);
 }
 
+body.no-scroll {overflow:hidden;}
+
+button,a {font:inherit;}
+
+button {cursor:pointer;}
+
+img {max-width:100%;}
+
+/* WELCOME SCREEN */
+
+.welcome-screen {
+  position:fixed;
+  inset:0;
+  z-index:1000;
+  background:var(--black);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:1;
+  visibility:visible;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+
+.welcome-screen.hide {
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.welcome-screen img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.welcome-fallback {
+  text-align:center;
+  padding:25px;
+  color:var(--cream);
+}
+
+.welcome-fallback h1 {
+  font-family:'Playfair Display',serif;
+  color:var(--gold);
+  font-size:clamp(35px,8vw,65px);
+  letter-spacing:3px;
+}
+
+.welcome-fallback p {
+  margin-top:18px;
+  letter-spacing:3px;
+}
+
+/* HEADER */
+
 header {
   background:var(--black);
   color:white;
-  padding:18px 7%;
+  padding:17px 7%;
   display:flex;
   justify-content:space-between;
   align-items:center;
   position:sticky;
   top:0;
   z-index:100;
+  border-bottom:1px solid #d4af3730;
 }
 
 .logo {
   font-family:'Playfair Display',serif;
   font-size:25px;
   letter-spacing:2px;
+  white-space:nowrap;
 }
 
-.logo span {color:var(--gold);}
+.logo span,footer span {color:var(--gold);}
 
 nav {
   display:flex;
-  gap:25px;
+  gap:22px;
   align-items:center;
 }
 
@@ -69,33 +128,73 @@ nav a {
 nav a:hover {color:var(--gold);}
 
 .cart-button {
-  background:var(--red);
-  border:0;
-  padding:10px 16px;
+  background:var(--burgundy);
+  border:1px solid var(--gold);
+  padding:10px 15px;
   color:white;
-  border-radius:5px;
-  cursor:pointer;
+  border-radius:4px;
+}
+
+.cart-button:hover {background:#852b48;}
+
+/* GENERAL BUTTONS */
+
+.primary-btn {
+  display:inline-block;
+  margin-top:25px;
+  background:var(--gold);
+  color:var(--black);
+  padding:14px 25px;
+  text-decoration:none;
+  border:0;
+  border-radius:3px;
+  font-weight:700;
+  letter-spacing:.5px;
+}
+
+.primary-btn:hover {background:#edcf75;}
+
+.section {padding:75px 7%;}
+
+.section-heading {
+  text-align:center;
+  margin-bottom:38px;
+}
+
+.section-heading small {
+  color:var(--burgundy);
+  letter-spacing:3px;
+  font-weight:700;
+  font-size:11px;
+}
+
+.section-heading h2 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(30px,5vw,40px);
+  margin-top:10px;
+}
+
+.section-heading p {
+  margin-top:10px;
+  color:var(--muted);
+  line-height:1.7;
 }
 
 /* HOMEPAGE HERO */
 
 .hero {
-  min-height:620px;
+  min-height:600px;
   display:flex;
   align-items:center;
   padding:65px 8%;
   background:
-    linear-gradient(90deg,rgba(15,8,10,.90),rgba(15,8,10,.25)),
+    linear-gradient(90deg,rgba(8,8,8,.94),rgba(8,8,8,.40)),
     url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1800&q=85')
     center 35%/cover;
   color:white;
 }
 
-.hero-content {
-  max-width:550px;
-}
-
-/* NEW CIRCULAR GOLD IMAGE */
+.hero-content {max-width:570px;}
 
 .hero-logo {
   width:145px;
@@ -106,7 +205,7 @@ nav a:hover {color:var(--gold);}
   margin-bottom:25px;
   overflow:hidden;
   background:var(--black);
-  box-shadow:0 0 25px rgba(198,164,119,.35);
+  box-shadow:0 0 25px #d4af3755;
 }
 
 .hero-logo img {
@@ -120,109 +219,128 @@ nav a:hover {color:var(--gold);}
 .hero small {
   color:var(--gold);
   letter-spacing:4px;
-  font-weight:bold;
+  font-weight:700;
 }
 
 .hero h1 {
   font-family:'Playfair Display',serif;
-  font-size:clamp(42px,7vw,76px);
+  font-size:clamp(40px,7vw,72px);
   line-height:1.1;
-  margin:20px 0;
+  margin:18px 0;
 }
 
 .hero p {
-  line-height:1.8;
-  max-width:440px;
+  line-height:1.9;
+  max-width:470px;
   color:#eee;
 }
 
-.primary-btn {
-  display:inline-block;
-  margin-top:28px;
-  background:var(--red);
-  color:white;
-  padding:15px 27px;
-  text-decoration:none;
-  border:0;
-  cursor:pointer;
-  border-radius:3px;
-  font-weight:bold;
-}
-
-.primary-btn:hover {background:#78182a;}
-
-.section {padding:75px 7%;}
-
-.section-heading {
-  text-align:center;
-  margin-bottom:40px;
-}
-
-.section-heading small {
-  color:var(--red);
-  letter-spacing:3px;
-  font-weight:bold;
-}
-
-.section-heading h2 {
-  font-family:'Playfair Display',serif;
-  font-size:38px;
-  margin-top:10px;
-}
-
-.section-heading p {
-  margin-top:12px;
-  color:#777;
-}
-
-/* COLLECTIONS */
+/* THREE MAIN CATEGORIES */
 
 .categories {
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
 }
 
 .category {
-  height:300px;
+  height:340px;
   position:relative;
   overflow:hidden;
-  background:#ddd;
   display:block;
+  background:var(--black);
   text-decoration:none;
+  border:1px solid #d4af3760;
 }
 
 .category img {
   width:100%;
   height:100%;
   object-fit:cover;
-  transition:.4s;
+  transition:transform .5s;
 }
 
-.category:hover img {transform:scale(1.06);}
+.category:hover img {transform:scale(1.07);}
 
 .category:after {
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(transparent,rgba(0,0,0,.65));
+  background:linear-gradient(transparent 35%,rgba(0,0,0,.85));
+}
+
+.category-content {
+  position:absolute;
+  z-index:2;
+  bottom:25px;
+  left:22px;
+  color:white;
 }
 
 .category h3 {
-  position:absolute;
-  bottom:22px;
-  left:20px;
-  color:white;
   font-family:'Playfair Display',serif;
-  font-size:26px;
-  z-index:2;
+  font-size:30px;
+  color:var(--gold);
 }
 
-/* PRODUCTS */
+.category p {
+  margin-top:7px;
+  font-size:13px;
+  color:#eee;
+}
+
+.category-link {
+  display:inline-block;
+  margin-top:12px;
+  color:white;
+  font-size:12px;
+  letter-spacing:1px;
+  border-bottom:1px solid var(--gold);
+  padding-bottom:4px;
+}
+
+/* CATALOGUE */
+
+.catalogue-page {display:none;}
+
+.catalogue-page.active {display:block;}
+
+.catalogue-banner {
+  background:var(--black-soft);
+  color:white;
+  padding:55px 7%;
+  text-align:center;
+  border-bottom:2px solid var(--gold);
+}
+
+.catalogue-banner small {
+  color:var(--gold);
+  letter-spacing:3px;
+  font-weight:bold;
+}
+
+.catalogue-banner h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(35px,6vw,52px);
+  margin:12px 0;
+}
+
+.catalogue-banner p {
+  color:#ddd;
+  line-height:1.7;
+}
+
+.back-home {
+  display:inline-block;
+  margin-top:20px;
+  color:var(--gold);
+  text-decoration:none;
+  font-size:13px;
+}
 
 .products {
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:25px;
 }
 
@@ -230,6 +348,7 @@ nav a:hover {color:var(--gold);}
   background:white;
   padding-bottom:20px;
   overflow:hidden;
+  border:1px solid #e6dfd5;
   transition:.3s;
 }
 
@@ -238,11 +357,16 @@ nav a:hover {color:var(--gold);}
   box-shadow:0 10px 25px #0001;
 }
 
-.product img {
-  width:100%;
+.product-image-wrap {
   height:310px;
-  object-fit:cover;
   background:#eee;
+  overflow:hidden;
+}
+
+.product-image-wrap img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
   display:block;
 }
 
@@ -250,34 +374,35 @@ nav a:hover {color:var(--gold);}
 
 .product-info h3 {
   font-family:'Playfair Display',serif;
-  font-size:20px;
+  font-size:19px;
+  line-height:1.4;
 }
 
 .product-info p {
   color:#777;
   font-size:13px;
-  margin-top:7px;
-  line-height:1.6;
+  margin-top:8px;
+  line-height:1.7;
 }
 
 .price {
-  color:var(--red);
-  font-weight:bold;
-  margin:12px 0;
-  font-size:17px;
+  color:var(--burgundy);
+  font-weight:700;
+  margin:13px 0;
+  font-size:18px;
 }
 
 .add-btn {
   background:var(--black);
   color:white;
-  border:0;
-  padding:12px;
+  border:1px solid var(--gold);
+  padding:13px;
   width:100%;
-  cursor:pointer;
-  font-weight:bold;
+  font-weight:700;
+  transition:.2s;
 }
 
-.add-btn:hover {background:var(--red);}
+.add-btn:hover {background:var(--burgundy);}
 
 /* ABOUT */
 
@@ -288,7 +413,7 @@ nav a:hover {color:var(--gold);}
 }
 
 .about p {
-  max-width:680px;
+  max-width:700px;
   margin:20px auto;
   line-height:1.9;
   color:#ddd;
@@ -302,26 +427,29 @@ footer {
   background:#100b0d;
   color:white;
   text-align:center;
-  padding:30px 15px;
+  padding:35px 15px;
   font-size:13px;
 }
 
-footer span {color:var(--gold);}
+footer h2 {
+  font-family:'Playfair Display',serif;
+  margin-bottom:10px;
+}
 
-/* SHOPPING CART */
+/* CART */
 
 .cart-panel {
   position:fixed;
-  right:-420px;
+  right:-450px;
   top:0;
-  width:min(390px,100%);
+  width:min(420px,100%);
   height:100%;
-  background:white;
-  z-index:200;
-  padding:25px;
+  background:var(--cream);
+  z-index:300;
+  padding:23px;
   transition:.3s;
   overflow-y:auto;
-  box-shadow:0 0 30px #0002;
+  box-shadow:0 0 30px #0003;
 }
 
 .cart-panel.open {right:0;}
@@ -330,36 +458,81 @@ footer span {color:var(--gold);}
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:25px;
+  margin-bottom:22px;
+  padding-bottom:15px;
+  border-bottom:1px solid #ddd;
+}
+
+.cart-header h2 {
+  font-family:'Playfair Display',serif;
+  font-size:23px;
 }
 
 .close-btn {
   border:0;
   background:none;
-  font-size:25px;
-  cursor:pointer;
+  font-size:30px;
+  color:var(--black);
 }
 
 .cart-item {
   display:flex;
-  justify-content:space-between;
+  gap:12px;
   align-items:center;
-  padding:15px 0;
+  padding:14px 0;
   border-bottom:1px solid #ddd;
-  gap:10px;
 }
 
-.cart-item button {
-  background:none;
+.cart-item img {
+  width:65px;
+  height:75px;
+  object-fit:cover;
+  background:#eee;
+}
+
+.cart-item-info {flex:1;}
+
+.cart-item-info strong {
+  font-size:13px;
+  line-height:1.4;
+  display:block;
+}
+
+.cart-item-info small {
+  display:block;
+  color:#666;
+  margin-top:5px;
+}
+
+.quantity-controls {
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin-top:9px;
+}
+
+.quantity-controls button {
+  width:26px;
+  height:26px;
+  border:1px solid var(--gold);
+  background:white;
+  color:var(--black);
+}
+
+.remove-btn {
   border:0;
-  color:var(--red);
-  cursor:pointer;
+  background:none;
+  color:var(--burgundy);
+  font-size:12px;
   font-weight:bold;
+  margin-left:auto;
 }
 
 .total {
-  margin:25px 0;
-  font-size:19px;
+  margin:23px 0;
+  padding-top:15px;
+  border-top:1px solid #ddd;
+  font-size:20px;
   font-weight:bold;
 }
 
@@ -369,7 +542,6 @@ footer span {color:var(--gold);}
   background:#168b49;
   color:white;
   border:0;
-  cursor:pointer;
   font-weight:bold;
 }
 
@@ -379,71 +551,91 @@ footer span {color:var(--gold);}
   display:none;
   position:fixed;
   inset:0;
-  background:#0008;
-  z-index:150;
+  background:#0009;
+  z-index:250;
 }
 
 .overlay.show {display:block;}
 
-/* MOBILE RESPONSIVENESS */
-
-@media(max-width:750px) {
-  header {padding:15px 5%;}
-  .logo {font-size:19px;}
-  nav {gap:12px;}
-  nav a {font-size:11px;}
-
-  .hero {
-    min-height:550px;
-    padding:55px 7%;
-  }
-
-  .hero-logo {
-    width:125px;
-    height:125px;
-  }
-
-  .categories {
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-  }
-
-  .category {height:220px;}
-
-  .category h3 {
-    font-size:20px;
-    left:12px;
-  }
-
-  .products {
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-  }
-
-  .product img {height:210px;}
-  .product-info {padding:12px;}
-  .product-info h3 {font-size:16px;}
-  .section {padding:55px 5%;}
+.empty-cart {
+  text-align:center;
+  padding:30px 10px;
+  color:#777;
+  line-height:1.8;
 }
 
-@media(max-width:380px) {
-  .products {grid-template-columns:1fr;}
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+  header {padding:15px 5%;}
+  .logo {font-size:20px;}
+  nav {gap:12px;}
+  nav a {font-size:11px;}
+  .categories {gap:13px;}
+  .category {height:270px;}
+  .products {grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+  .product-image-wrap {height:260px;}
+}
+
+@media(max-width:550px) {
+  header {padding:13px 4%;}
+  .logo {font-size:17px;letter-spacing:1px;}
+  nav {gap:8px;}
   nav a {display:none;}
-  .categories {grid-template-columns:1fr;}
+  .cart-button {padding:9px 11px;font-size:12px;}
+
+  .hero {min-height:560px;padding:45px 6%;}
+  .hero-logo {width:120px;height:120px;}
+  .hero h1 {font-size:43px;}
+
+  .section {padding:55px 5%;}
+  .categories {grid-template-columns:1fr;gap:16px;}
+  .category {height:300px;}
+  .category h3 {font-size:27px;}
+
+  .products {grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;}
+  .product-image-wrap {height:205px;}
+  .product-info {padding:11px;}
+  .product-info h3 {font-size:15px;}
+  .product-info p {font-size:11px;}
+  .price {font-size:15px;}
+  .add-btn {font-size:11px;padding:11px 5px;}
+
+  .catalogue-banner {padding:40px 5%;}
+}
+
+@media(max-width:350px) {
+  .products {grid-template-columns:1fr;}
+  .product-image-wrap {height:280px;}
 }
 </style>
 </head>
 
-<body>
+<body class="no-scroll">
+
+<!-- WELCOME SCREEN: SHOWS FOR 5 SECONDS -->
+
+<div class="welcome-screen" id="welcome-screen">
+  <img
+    src="images/welcome-delvin.png"
+    alt="Welcome to Delvin Glamour"
+    id="welcome-image"
+  >
+  <div class="welcome-fallback" id="welcome-fallback" style="display:none;">
+    <h1>DELVIN GLAMOUR</h1>
+    <p>Your beauty,our concern</p>
+  </div>
+</div>
+
+<!-- HEADER -->
 
 <header>
   <div class="logo">DELVIN <span>GLAMOUR</span></div>
 
   <nav>
-    <a href="#home">Home</a>
-    <a href="#collections">Collections</a>
-    <a href="#shop">Shop</a>
-    <a href="#about">About</a>
+    <a href="#" onclick="showHome();return false;">Home</a>
+    <a href="#collections" onclick="showHome();return true;">Collections</a>
+    <a href="#about" onclick="showHome();return true;">About</a>
 
     <button class="cart-button" onclick="toggleCart()">
       Cart (<span id="cart-count">0</span>)
@@ -453,131 +645,144 @@ footer span {color:var(--gold);}
 
 <!-- HOMEPAGE -->
 
-<section class="hero" id="home">
+<main id="homepage">
 
-  <div class="hero-content">
+  <section class="hero" id="home">
+    <div class="hero-content">
 
-    <!-- NEW CIRCULAR IMAGE -->
-    <div class="hero-logo">
-      <img
-        src="images/a3168f61b1ba49c79a2bbc7acf50015a(1).jpg"
-        alt="Delvin Glamour brand image"
-      >
+      <div class="hero-logo">
+        <img
+          src="images/a3168f61b1ba49c79a2bbc7acf50015a(1).jpg"
+          alt="Delvin Glamour brand image"
+        >
+      </div>
+
+      <small>WELCOME TO DELVIN GLAMOUR</small>
+
+      <h1>Where Beauty Meets Elegance.</h1>
+
+      <p>
+        Discover beautiful wigs, elegant nail designs and
+        premium lashes carefully selected to enhance your
+        confidence, beauty and personal style.
+        Your beauty,our concern.
+      </p>
+
+      <a href="#collections" class="primary-btn">EXPLORE OUR COLLECTIONS</a>
+    </div>
+  </section>
+
+  <section class="section" id="collections">
+    <div class="section-heading">
+      <small>DISCOVER YOUR BEAUTY</small>
+      <h2>Shop Our Collections</h2>
+      <p>Choose a category to explore our complete collection.</p>
     </div>
 
-    <small>WELCOME TO DELVIN GLAMOUR</small>
+    <div class="categories">
 
-    <h1>Luxury Hair. Timeless Beauty.</h1>
+      <a href="#wigs" class="category" onclick="openCategory('wigs');return false;">
+        <img src="images/bone-straight.jpg" alt="Wigs collection">
+        <div class="category-content">
+          <h3>Wigs</h3>
+          <p>Explore our 10 beautiful wig styles.</p>
+          <span class="category-link">VIEW WIGS →</span>
+        </div>
+      </a>
+
+      <a href="#nails" class="category" onclick="openCategory('nails');return false;">
+        <img src="images/french-tips.jpg" alt="Nails collection">
+        <div class="category-content">
+          <h3>Nails</h3>
+          <p>Explore our 10 beautiful nail designs.</p>
+          <span class="category-link">VIEW NAILS →</span>
+        </div>
+      </a>
+
+      <a href="#lashes" class="category" onclick="openCategory('lashes');return false;">
+        <img src="images/natural-lashes.jpg" alt="Lashes collection">
+        <div class="category-content">
+          <h3>Lashes</h3>
+          <p>Explore our 10 beautiful lash styles.</p>
+          <span class="category-link">VIEW LASHES →</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="section about" id="about">
+    <div class="section-heading">
+      <small>OUR STORY</small>
+      <h2>About Delvin Glamour</h2>
+    </div>
 
     <p>
-      Discover beautiful wigs and premium hair extensions
-      designed to enhance your confidence, beauty and elegance.
-      Your perfect hair transformation starts here.
+      DELVIN GLAMOUR is dedicated to beauty, confidence
+      and timeless elegance. We bring together beautiful
+      wigs, stylish nails and premium lashes to help you
+      express your personality and feel confident.
+
+      Whether you are looking for a new hairstyle, a
+      beautiful nail design or the perfect lashes, we are
+      here to make your beauty experience special.
     </p>
 
-    <a href="#shop" class="primary-btn">SHOP OUR WIGS</a>
+    <a href="#collections" class="primary-btn">SHOP OUR COLLECTIONS</a>
+  </section>
 
+</main>
+
+<!-- WIGS CATALOGUE -->
+
+<section class="catalogue-page" id="wigs-page">
+  <div class="catalogue-banner">
+    <small>DELVIN GLAMOUR COLLECTION</small>
+    <h1>Luxury Wigs</h1>
+    <p>Explore our collection of 10 beautiful wig styles.</p>
+    <a href="#" class="back-home" onclick="showHome();return false;">← BACK TO HOMEPAGE</a>
+  </div>
+  <div class="section">
+    <div class="products" id="wigs-products"></div>
   </div>
 </section>
 
-<!-- HAIR COLLECTIONS -->
+<!-- NAILS CATALOGUE -->
 
-<section class="section" id="collections">
-
-  <div class="section-heading">
-    <small>DISCOVER YOUR BEAUTY</small>
-    <h2>Our Hair Collections</h2>
+<section class="catalogue-page" id="nails-page">
+  <div class="catalogue-banner">
+    <small>DELVIN GLAMOUR COLLECTION</small>
+    <h1>Beautiful Nails</h1>
+    <p>Explore our collection of 10 elegant nail designs.</p>
+    <a href="#" class="back-home" onclick="showHome();return false;">← BACK TO HOMEPAGE</a>
   </div>
-
-  <div class="categories">
-
-    <a href="#shop" class="category">
-      <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=80" alt="Straight hair inspiration">
-      <h3>Bone Straight</h3>
-    </a>
-
-    <a href="#shop" class="category">
-      <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" alt="Body wave hair inspiration">
-      <h3>Body Wave</h3>
-    </a>
-
-    <a href="#shop" class="category">
-      <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=700&q=80" alt="Deep wave hair inspiration">
-      <h3>Deep Wave</h3>
-    </a>
-
-    <a href="#shop" class="category">
-      <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=700&q=80" alt="Curly hair inspiration">
-      <h3>Curly Wigs</h3>
-    </a>
-
-    <a href="#shop" class="category">
-      <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=700&q=80" alt="Lace front wig inspiration">
-      <h3>Lace Frontals</h3>
-    </a>
-
-    <a href="#shop" class="category">
-      <img src="https://images.unsplash.com/photo-1512316609839-ce289d3eba0a?auto=format&fit=crop&w=700&q=80" alt="Hair beauty inspiration">
-      <h3>Hair Bundles</h3>
-    </a>
-
+  <div class="section">
+    <div class="products" id="nails-products"></div>
   </div>
 </section>
 
-<!-- PRODUCTS -->
+<!-- LASHES CATALOGUE -->
 
-<section class="section" id="shop">
-
-  <div class="section-heading">
-    <small>PREMIUM HAIR COLLECTION</small>
-    <h2>Featured Wigs & Hair</h2>
-    <p>Find the perfect hair to express your beauty.</p>
+<section class="catalogue-page" id="lashes-page">
+  <div class="catalogue-banner">
+    <small>DELVIN GLAMOUR COLLECTION</small>
+    <h1>Premium Lashes</h1>
+    <p>Explore our collection of 10 beautiful lash styles.</p>
+    <a href="#" class="back-home" onclick="showHome();return false;">← BACK TO HOMEPAGE</a>
   </div>
-
-  <div class="products" id="product-list"></div>
-
-</section>
-
-<!-- ABOUT -->
-
-<section class="section about" id="about">
-
-  <div class="section-heading">
-    <small>OUR STORY</small>
-    <h2>About Delvin Glamour</h2>
+  <div class="section">
+    <div class="products" id="lashes-products"></div>
   </div>
-
-  <p>
-    DELVIN GLAMOUR is dedicated to beauty, confidence
-    and timeless elegance through premium wigs and hair
-    extensions.
-
-    We believe that beautiful hair is more than just a style.
-    It is an expression of confidence, personality and beauty.
-
-    Whether you love bone straight, body wave, deep wave
-    or curly hairstyles, we are here to help you discover
-    your perfect look.
-  </p>
-
-  <a href="#shop" class="primary-btn">EXPLORE OUR HAIR</a>
-
 </section>
 
 <!-- FOOTER -->
 
 <footer>
-
-  <h2 style="font-family:'Playfair Display',serif;margin-bottom:10px;">
-    DELVIN <span>GLAMOUR</span>
-  </h2>
-
-  <p>Luxury Hair. Timeless Beauty.</p>
-
+  <h2>DELVIN <span>GLAMOUR</span></h2>
+  <p>Your beauty,our concern</p>
   <p style="margin-top:15px;">
     © 2026 DELVIN GLAMOUR. All rights reserved.
   </p>
-
 </footer>
 
 <!-- CART -->
@@ -585,7 +790,6 @@ footer span {color:var(--gold);}
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
 <div class="cart-panel" id="cart-panel">
-
   <div class="cart-header">
     <h2>Your Shopping Cart</h2>
     <button class="close-btn" onclick="toggleCart()">×</button>
@@ -598,166 +802,353 @@ footer span {color:var(--gold);}
   <button class="checkout" onclick="checkout()">
     ORDER VIA WHATSAPP
   </button>
-
 </div>
 
 <script>
 
-// WHATSAPP NUMBER
+/* WHATSAPP NUMBER */
+
 const WHATSAPP_NUMBER = "2348107171050";
 
-// ALL 12 DELVIN GLAMOUR PRODUCTS
+/* PRODUCT CATALOGUES
+   Image filenames must match the files uploaded to images/.
+*/
 
-const products = [
+const catalogues = {
 
-  {
-    id:1,
-    name:"Premium Body Wave Lace Front Wig",
-    description:"Luxurious, voluminous natural black body wave wig with a pre-plucked hairline and transparent lace.",
-    price:95000,
-    image:"images/IMG-20261117-WA0001.jpg"
-  },
+  wigs: [
+    {
+      id:1,
+      name:"Bone Straight Lace Front Wig",
+      description:"Sleek, smooth and glossy straight hair for a polished and elegant look.",
+      price:95000,
+      image:"images/bone-straight.jpg"
+    },
+    {
+      id:2,
+      name:"Body Wave Lace Front Wig",
+      description:"Beautiful loose S-shaped waves with bounce, softness and volume.",
+      price:75000,
+      image:"images/body-wave.jpg"
+    },
+    {
+      id:3,
+      name:"Blunt Cut Bob Wig",
+      description:"A stylish short bob with sharp, even ends for a neat and modern appearance.",
+      price:65000,
+      image:"images/blunt-bob.jpg"
+    },
+    {
+      id:4,
+      name:"Deep Wave Lace Front Wig",
+      description:"Defined deep waves with beautiful fullness and glamorous volume.",
+      price:78000,
+      image:"images/deep-wave.jpg"
+    },
+    {
+      id:5,
+      name:"Jerry Curl Lace Front Wig",
+      description:"Beautiful springy curls for a full, lively and glamorous hairstyle.",
+      price:120000,
+      image:"images/jerry-curl.jpg"
+    },
+    {
+      id:6,
+      name:"Water Wave Wig",
+      description:"Soft, flowing water waves with a natural tousled appearance.",
+      price:105000,
+      image:"images/water-wave.jpg"
+    },
+    {
+      id:7,
+      name:"Honey Blonde Highlight Wig",
+      description:"Beautiful honey-blonde highlights blended into a dark base for extra dimension.",
+      price:85000,
+      image:"images/honey-blonde.jpg"
+    },
+    {
+      id:8,
+      name:"Pixie Cut Wig",
+      description:"A chic short hairstyle with a stylish cropped and layered finish.",
+      price:56000,
+      image:"images/pixie-cut.jpg"
+    },
+    {
+      id:9,
+      name:"Afro Kinky Curly Headband Wig",
+      description:"Beautiful tight curly texture with an easy headband style.",
+      price:90000,
+      image:"images/afro-kinky.jpg"
+    },
+    {
+      id:10,
+      name:"Full Lace Box Braided Wig",
+      description:"A ready-to-wear braided look for a stylish and beautiful appearance.",
+      price:59000,
+      image:"images/box-braided.jpg"
+    }
+  ],
 
-  {
-    id:2,
-    name:"Deep Wave Human Hair Bundles",
-    description:"Five beautiful bundles of raw-style human hair with gorgeous deep and water wave curls.",
-    price:75000,
-    image:"images/IMG-20261117-WA0002.jpg"
-  },
+  nails: [
+    {
+      id:11,
+      name:"French Tips",
+      description:"Classic French-tip nails for a clean, timeless and elegant finish.",
+      price:12000,
+      image:"images/french-tips.jpg"
+    },
+    {
+      id:12,
+      name:"Nude Elegance",
+      description:"Beautiful nude-toned nails for a simple and sophisticated look.",
+      price:12000,
+      image:"images/nude-elegance.jpg"
+    },
+    {
+      id:13,
+      name:"Pink Glam",
+      description:"Pretty pink nail designs for a soft and feminine appearance.",
+      price:14000,
+      image:"images/pink-glam.jpg"
+    },
+    {
+      id:14,
+      name:"Chrome Nails",
+      description:"Shiny metallic-inspired nails with a modern finish.",
+      price:15000,
+      image:"images/chrome-nails.jpg"
+    },
+    {
+      id:15,
+      name:"Glitter Nails",
+      description:"Sparkling nail designs for a glamorous and eye-catching look.",
+      price:15000,
+      image:"images/glitter-nails.jpg"
+    },
+    {
+      id:16,
+      name:"Marble Nails",
+      description:"Elegant marble-inspired patterns with a beautiful artistic finish.",
+      price:16000,
+      image:"images/marble-nails.jpg"
+    },
+    {
+      id:17,
+      name:"Coffin Nails",
+      description:"Stylish coffin-shaped nails for a bold and fashionable look.",
+      price:14000,
+      image:"images/coffin-nails.jpg"
+    },
+    {
+      id:18,
+      name:"Almond Nails",
+      description:"Elegant almond-shaped nails with a graceful tapered finish.",
+      price:14000,
+      image:"images/almond-nails.jpg"
+    },
+    {
+      id:19,
+      name:"Floral Nails",
+      description:"Beautiful floral-inspired nail art for a delicate finish.",
+      price:17000,
+      image:"images/floral-nails.jpg"
+    },
+    {
+      id:20,
+      name:"Luxury Rhinestone Nails",
+      description:"Decorative nail designs featuring glamorous stone details.",
+      price:18000,
+      image:"images/rhinestone-nails.jpg"
+    }
+  ],
 
-  {
-    id:3,
-    name:"Luxury Body Wave Wig",
-    description:"Elegant middle-part body wave human hair with soft S-shaped curls for a beautiful finish.",
-    price:65000,
-    image:"images/IMG-20261117-WA0003.jpg"
-  },
+  lashes: [
+    {
+      id:21,
+      name:"Natural Lashes",
+      description:"Soft, natural-looking lashes for an effortlessly beautiful appearance.",
+      price:5000,
+      image:"images/natural-lashes.jpg"
+    },
+    {
+      id:22,
+      name:"Wispy Lashes",
+      description:"Wispy lash styling for a soft, fluttery and defined finish.",
+      price:6000,
+      image:"images/wispy-lashes.jpg"
+    },
+    {
+      id:23,
+      name:"Volume Lashes",
+      description:"Fuller-looking lashes for added definition and volume.",
+      price:7000,
+      image:"images/volume-lashes.jpg"
+    },
+    {
+      id:24,
+      name:"Mega Volume Lashes",
+      description:"A bold, full lash look for dramatic eye definition.",
+      price:9000,
+      image:"images/mega-volume.jpg"
+    },
+    {
+      id:25,
+      name:"Cat Eye Lashes",
+      description:"An elongated outer-corner style for a lifted eye appearance.",
+      price:7000,
+      image:"images/cat-eye-lashes.jpg"
+    },
+    {
+      id:26,
+      name:"Doll Eye Lashes",
+      description:"A rounded lash style that gives the eyes a wide, open appearance.",
+      price:7000,
+      image:"images/doll-eye-lashes.jpg"
+    },
+    {
+      id:27,
+      name:"Hybrid Lashes",
+      description:"A combination of classic and fuller lash styling.",
+      price:8000,
+      image:"images/hybrid-lashes.jpg"
+    },
+    {
+      id:28,
+      name:"Dramatic Lashes",
+      description:"Statement lashes for a bold and glamorous appearance.",
+      price:10000,
+      image:"images/dramatic-lashes.jpg"
+    },
+    {
+      id:29,
+      name:"Mink Lashes",
+      description:"Soft-looking lashes with a beautifully luxurious finish.",
+      price:10000,
+      image:"images/mink-lashes.jpg"
+    },
+    {
+      id:30,
+      name:"3D Lashes",
+      description:"Multi-dimensional lash styling for a fuller-looking effect.",
+      price:12000,
+      image:"images/3d-lashes.jpg"
+    }
+  ]
 
-  {
-    id:4,
-    name:"Premium Bone Straight Hair Bundles",
-    description:"Three sleek, silky and high-luster bone straight hair bundles for a smooth hairstyle.",
-    price:78000,
-    image:"images/IMG-20261117-WA0004.jpg"
-  },
+};
 
-  {
-    id:5,
-    name:"13x4 Straight Lace Front Wig",
-    description:"Long silky straight human hair with a 13x4 lace frontal, deep parting space and pre-plucked hairline.",
-    price:120000,
-    image:"images/IMG-20261117-WA0005.jpg"
-  },
+/* COMBINE ALL PRODUCTS FOR THE CART */
 
-  {
-    id:6,
-    name:"Deep Wave Curly Human Hair Wig",
-    description:"Beautiful high-density natural black deep and water wave curls for a full, glamorous look.",
-    price:105000,
-    image:"images/IMG-20261117-WA0006.jpg"
-  },
-
-  {
-    id:7,
-    name:"Premium Bone Straight Wig",
-    description:"Long, smooth middle-part bone straight human hair with a matching sleek finish.",
-    price:85000,
-    image:"images/IMG-20261117-WA0007.jpg"
-  },
-
-  {
-    id:8,
-    name:"Luxury Body Wave Lace Wig",
-    description:"Beautiful body wave lace wig with a stylish finish, soft waves and custom baby hairs.",
-    price:56000,
-    image:"images/IMG-20261117-WA0008.jpg"
-  },
-
-  {
-    id:9,
-    name:"Custom Body Wave Lace Front Wig",
-    description:"Gorgeous body wave lace front wig with a natural-looking hairline and beautifully styled baby hairs.",
-    price:90000,
-    image:"images/IMG-20261117-WA0009.jpg"
-  },
-
-  {
-    id:10,
-    name:"Water Wave Curly Human Hair Wig",
-    description:"Full-frontal tight water wave and deep wave curls for a bold, beautiful and glamorous appearance.",
-    price:88000,
-    image:"images/IMG-20261117-WA0010.jpg"
-  },
-
-  {
-    id:11,
-    name:"Premium Luxury Human Hair Wig",
-    description:"A beautiful premium hair collection designed for a stylish, elegant and glamorous appearance.",
-    price:56000,
-    image:"images/IMG-20261117-WA0011.jpg"
-  },
-
-  {
-    id:12,
-    name:"Exclusive Luxury Hair Collection",
-    description:"Discover another beautiful addition to the Delvin Glamour premium hair collection.",
-    price:59000,
-    image:"images/IMG-20261117-WA0012.jpg"
-  }
-
+const allProducts = [
+  ...catalogues.wigs,
+  ...catalogues.nails,
+  ...catalogues.lashes
 ];
 
 let cart = [];
+
+/* FORMAT PRICES */
 
 function formatPrice(amount) {
   return "₦" + amount.toLocaleString("en-NG");
 }
 
-// DISPLAY PRODUCTS
+/* WELCOME SCREEN */
 
-function displayProducts() {
+const welcomeImage = document.getElementById("welcome-image");
 
-  const list = document.getElementById("product-list");
+welcomeImage.addEventListener("error", function() {
+  welcomeImage.style.display = "none";
+  document.getElementById("welcome-fallback").style.display = "block";
+});
 
-  list.innerHTML = products.map(product => `
+window.addEventListener("load", function() {
+  setTimeout(function() {
+    document.getElementById("welcome-screen").classList.add("hide");
+    document.body.classList.remove("no-scroll");
+  }, 5000);
+});
 
-    <div class="product">
+/* DISPLAY EACH CATALOGUE */
 
-      <img
-        src="${product.image}"
-        alt="${product.name}"
-        loading="lazy"
-      >
+function displayCatalogue(category) {
+
+  const list = document.getElementById(category + "-products");
+
+  list.innerHTML = catalogues[category].map(product => `
+    <article class="product">
+
+      <div class="product-image-wrap">
+        <img
+          src="${product.image}"
+          alt="${product.name}"
+          loading="lazy"
+          onerror="this.style.opacity='0.15';"
+        >
+      </div>
 
       <div class="product-info">
-
         <h3>${product.name}</h3>
 
         <p>${product.description}</p>
 
-        <div class="price">
-          ${formatPrice(product.price)}
-        </div>
+        <div class="price">${formatPrice(product.price)}</div>
 
-        <button class="add-btn"
-          onclick="addToCart(${product.id})">
+        <button class="add-btn" onclick="addToCart(${product.id})">
           ADD TO CART
         </button>
-
       </div>
 
-    </div>
-
+    </article>
   `).join("");
 
 }
 
-// ADD TO CART
+/* SHOW ALL THREE CATALOGUES */
+
+function initializeCatalogues() {
+  displayCatalogue("wigs");
+  displayCatalogue("nails");
+  displayCatalogue("lashes");
+}
+
+/* OPEN A CATEGORY */
+
+function openCategory(category) {
+
+  document.getElementById("homepage").style.display = "none";
+
+  document.querySelectorAll(".catalogue-page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  const selectedPage = document.getElementById(category + "-page");
+
+  if (selectedPage) {
+    selectedPage.classList.add("active");
+  }
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* RETURN TO HOMEPAGE */
+
+function showHome() {
+
+  document.querySelectorAll(".catalogue-page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  document.getElementById("homepage").style.display = "block";
+
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* ADD TO CART */
 
 function addToCart(id) {
 
-  const product = products.find(p => p.id === id);
+  const product = allProducts.find(p => p.id === id);
 
   if (!product) return;
 
@@ -766,17 +1157,14 @@ function addToCart(id) {
   if (existing) {
     existing.quantity++;
   } else {
-    cart.push({...product, quantity:1});
+    cart.push({...product,quantity:1});
   }
 
   updateCart();
-
-  document.getElementById("cart-panel").classList.add("open");
-  document.getElementById("overlay").classList.add("show");
-
+  openCart();
 }
 
-// UPDATE CART
+/* UPDATE CART */
 
 function updateCart() {
 
@@ -786,24 +1174,41 @@ function updateCart() {
 
   document.getElementById("cart-count").textContent = count;
 
-  document.getElementById("cart-items").innerHTML =
+  const cartItems = document.getElementById("cart-items");
 
-    cart.length ? cart.map(item => `
+  if (!cart.length) {
+    cartItems.innerHTML = `
+      <div class="empty-cart">
+        <p>Your shopping cart is empty.</p>
+        <p>Add your favourite products to get started.</p>
+      </div>
+    `;
+  } else {
 
+    cartItems.innerHTML = cart.map(item => `
       <div class="cart-item">
 
-        <div>
-          <strong>${item.name}</strong><br>
-          ${formatPrice(item.price)} × ${item.quantity}
+        <img src="${item.image}" alt="${item.name}">
+
+        <div class="cart-item-info">
+          <strong>${item.name}</strong>
+          <small>${formatPrice(item.price)} each</small>
+
+          <div class="quantity-controls">
+            <button onclick="changeQuantity(${item.id},-1)">−</button>
+            <span>${item.quantity}</span>
+            <button onclick="changeQuantity(${item.id},1)">+</button>
+          </div>
         </div>
 
-        <button onclick="removeItem(${item.id})">
+        <button class="remove-btn" onclick="removeItem(${item.id})">
           Remove
         </button>
 
       </div>
+    `).join("");
 
-    `).join("") : "<p>Your cart is empty.</p>";
+  }
 
   const total = cart.reduce(
     (sum,item) => sum + item.price * item.quantity,0
@@ -811,30 +1216,49 @@ function updateCart() {
 
   document.getElementById("cart-total").textContent =
     "Total: " + formatPrice(total);
-
 }
 
-// REMOVE PRODUCT
+/* CHANGE PRODUCT QUANTITY */
 
-function removeItem(id) {
+function changeQuantity(id,change) {
 
-  cart = cart.filter(item => item.id !== id);
+  const item = cart.find(product => product.id === id);
+
+  if (!item) return;
+
+  item.quantity += change;
+
+  if (item.quantity <= 0) {
+    cart = cart.filter(product => product.id !== id);
+  }
 
   updateCart();
-
 }
 
-// OPEN AND CLOSE CART
+/* REMOVE PRODUCT */
+
+function removeItem(id) {
+  cart = cart.filter(item => item.id !== id);
+  updateCart();
+}
+
+/* OPEN CART */
+
+function openCart() {
+  document.getElementById("cart-panel").classList.add("open");
+  document.getElementById("overlay").classList.add("show");
+}
+
+/* OPEN AND CLOSE CART */
 
 function toggleCart() {
 
   document.getElementById("cart-panel").classList.toggle("open");
-
   document.getElementById("overlay").classList.toggle("show");
 
 }
 
-// WHATSAPP CHECKOUT
+/* WHATSAPP CHECKOUT */
 
 function checkout() {
 
@@ -843,41 +1267,32 @@ function checkout() {
     return;
   }
 
-  if (!/^234\d{10}$/.test(WHATSAPP_NUMBER)) {
-    alert("Please enter a valid WhatsApp number in the website code.");
-    return;
-  }
-
   let message =
-    "Hello DELVIN GLAMOUR! I want to place an order:\n\n";
+    "Hello DELVIN GLAMOUR! I would like to place an order:\n\n";
 
   cart.forEach(item => {
-
     message +=
-      `${item.name} x ${item.quantity} - ${formatPrice(item.price * item.quantity)}\n`;
-
+      item.name + " x " + item.quantity +
+      " - " + formatPrice(item.price * item.quantity) + "\n";
   });
 
   const total = cart.reduce(
     (sum,item) => sum + item.price * item.quantity,0
   );
 
-  message += `\nTotal: ${formatPrice(total)}`;
-
-  message +=
-    "\n\nPlease provide payment and delivery details.";
+  message += "\nTotal: " + formatPrice(total);
+  message += "\n\nPlease provide payment and delivery details.";
 
   const url =
     "https://wa.me/" + WHATSAPP_NUMBER +
     "?text=" + encodeURIComponent(message);
 
   window.open(url,"_blank");
-
 }
 
-// INITIALIZE WEBSITE
+/* INITIALIZE WEBSITE */
 
-displayProducts();
+initializeCatalogues();
 updateCart();
 
 </script>
