@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171012">
+<title>DELVIN GLAMOUR | Luxury Fashion</title>
+<meta name="description" content="Discover stylish fashion, clothing and accessories at DELVIN GLAMOUR. Shop your favourite looks.">
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black:#171012;
+  --red:#9f2438;
+  --cream:#f8f3ef;
+  --white:#fff;
+  --gold:#c6a477;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body {
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--black);
+}
+
+header {
+  background:var(--black);
+  color:white;
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo {
+  font-family:'Playfair Display',serif;
+  font-size:25px;
+  letter-spacing:2px;
+}
+
+.logo span {color:var(--gold);}
+
+nav {
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
+
+nav a {
+  color:white;
+  text-decoration:none;
+  font-size:13px;
+}
+
+.cart-button {
+  background:var(--red);
+  border:0;
+  padding:10px 16px;
+  color:white;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.hero {
+  min-height:570px;
+  display:flex;
+  align-items:center;
+  padding:70px 8%;
+  background:
+    linear-gradient(90deg,rgba(15,8,10,.88),rgba(15,8,10,.2)),
+    url('https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1800&q=85')
+    center/cover;
+  color:white;
+}
+
+.hero-content {max-width:550px;}
+
+.hero small {
+  color:var(--gold);
+  letter-spacing:4px;
+  font-weight:bold;
+}
+
+.hero h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,7vw,76px);
+  line-height:1.1;
+  margin:20px 0;
+}
+
+.hero p {
+  line-height:1.8;
+  max-width:420px;
+  color:#eee;
+}
+
+.primary-btn {
+  display:inline-block;
+  margin-top:28px;
+  background:var(--red);
+  color:white;
+  padding:15px 27px;
+  text-decoration:none;
+  border:0;
+  cursor:pointer;
+  border-radius:3px;
+  font-weight:bold;
+}
+
+.section {
+  padding:75px 7%;
+}
+
+.section-heading {
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.section-heading small {
+  color:var(--red);
+  letter-spacing:3px;
+  font-weight:bold;
+}
+
+.section-heading h2 {
+  font-family:'Playfair Display',serif;
+  font-size:38px;
+  margin-top:10px;
+}
+
+.categories {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.category {
+  height:260px;
+  position:relative;
+  overflow:hidden;
+  background:#ddd;
+}
+
+.category img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.4s;
+}
+
+.category:hover img {transform:scale(1.06);}
+
+.category h3 {
+  position:absolute;
+  bottom:20px;
+  left:20px;
+  color:white;
+  font-family:'Playfair Display',serif;
+  font-size:26px;
+  text-shadow:0 2px 8px #000;
+}
+
+.products {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+.product {
+  background:white;
+  padding-bottom:20px;
+  overflow:hidden;
+}
+
+.product img {
+  width:100%;
+  height:310px;
+  object-fit:cover;
+}
+
+.product-info {padding:18px;}
+
+.product-info h3 {
+  font-family:'Playfair Display',serif;
+  font-size:20px;
+}
+
+.price {
+  color:var(--red);
+  font-weight:bold;
+  margin:10px 0;
+}
+
+.add-btn {
+  background:var(--black);
+  color:white;
+  border:0;
+  padding:12px;
+  width:100%;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.add-btn:hover {background:var(--red);}
+
+.about {
+  background:var(--black);
+  color:white;
+  text-align:center;
+}
+
+.about p {
+  max-width:650px;
+  margin:20px auto;
+  line-height:1.9;
+  color:#ddd;
+}
+
+footer {
+  background:#100b0d;
+  color:white;
+  text-align:center;
+  padding:30px 15px;
+  font-size:13px;
+}
+
+footer span {color:var(--gold);}
+
+.cart-panel {
+  position:fixed;
+  right:-420px;
+  top:0;
+  width:min(390px,100%);
+  height:100%;
+  background:white;
+  z-index:200;
+  padding:25px;
+  transition:.3s;
+  overflow-y:auto;
+  box-shadow:0 0 30px #0002;
+}
+
+.cart-panel.open {right:0;}
+
+.cart-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.close-btn {
+  border:0;
+  background:none;
+  font-size:25px;
+  cursor:pointer;
+}
+
+.cart-item {
+  display:flex;
+  justify-content:space-between;
+  padding:15px 0;
+  border-bottom:1px solid #ddd;
+  gap:10px;
+}
+
+.cart-item button {
+  background:none;
+  border:0;
+  color:var(--red);
+  cursor:pointer;
+}
+
+.total {
+  margin:25px 0;
+  font-size:19px;
+  font-weight:bold;
+}
+
+.checkout {
+  width:100%;
+  padding:15px;
+  background:#168b49;
+  color:white;
+  border:0;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.overlay {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:150;
+}
+
+.overlay.show {display:block;}
+
+@media(max-width:750px) {
+  header {padding:15px 5%;}
+  .logo {font-size:20px;}
+  nav {gap:12px;}
+  nav a {font-size:11px;}
+  .hero {min-height:500px;padding:55px 7%;}
+  .categories {grid-template-columns:1fr;}
+  .category {height:230px;}
+  .products {grid-template-columns:repeat(2,1fr);gap:12px;}
+  .product img {height:210px;}
+  .product-info {padding:12px;}
+  .product-info h3 {font-size:16px;}
+  .section {padding:55px 5%;}
+}
+
+@media(max-width:380px) {
+  .products {grid-template-columns:1fr;}
+  nav a {display:none;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">DELVIN <span>GLAMOUR</span></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#about">About</a>
+    <button class="cart-button" onclick="toggleCart()">
+      Cart (<span id="cart-count">0</span>)
+    </button>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <small>WELCOME TO DELVIN GLAMOUR</small>
+    <h1>Style That Speaks. Elegance That Lasts.</h1>
+    <p>Discover beautiful fashion pieces designed to make every moment special. Express your confidence with style.</p>
+    <a href="#shop" class="primary-btn">SHOP COLLECTION</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <small>EXPLORE OUR STYLE</small>
+    <h2>Shop By Category</h2>
+  </div>
+
+  <div class="categories">
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80" alt="Women's fashion">
+      <h3>Women's Fashion</h3>
+    </div>
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80" alt="Fashion collection">
+      <h3>New Arrivals</h3>
+    </div>
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=700&q=80" alt="Fashion accessories">
+      <h3>Accessories</h3>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="shop">
+  <div class="section-heading">
+    <small>OUR COLLECTION</small>
+    <h2>Featured Products</h2>
+    <p style="margin-top:12px;color:#777;">Find your next favourite look.</p>
+  </div>
+
+  <div class="products" id="product-list"></div>
+</section>
+
+<section class="section about" id="about">
+  <div class="section-heading">
+    <small>OUR STORY</small>
+    <h2>About Delvin Glamour</h2>
+  </div>
+  <p>
+    DELVIN GLAMOUR is about confidence, beauty and timeless style.
+    We believe fashion is more than what you wear; it is how you express yourself.
+    Discover your style and let your elegance shine.
+  </p>
+  <a href="#shop" class="primary-btn">EXPLORE COLLECTION</a>
+</section>
+
+<footer>
+  <h2 style="font-family:'Playfair Display',serif;margin-bottom:10px;">
+    DELVIN <span>GLAMOUR</span>
+  </h2>
+  <p>Elegance in Every Detail.</p>
+  <p style="margin-top:15px;">© 2026 DELVIN GLAMOUR. All rights reserved.</p>
+</footer>
+
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+<div class="cart-panel" id="cart-panel">
+  <div class="cart-header">
+    <h2>Your Shopping Cart</h2>
+    <button class="close-btn" onclick="toggleCart()">×</button>
+  </div>
+
+  <div id="cart-items"></div>
+  <div class="total" id="cart-total">Total: ₦0</div>
+
+  <button class="checkout" onclick="checkout()">
+    ORDER VIA WHATSAPP
+  </button>
+</div>
+
+<script>
+const WHATSAPP_NUMBER = "234XXXXXXXXXX";
+// Replace with your WhatsApp number, including country code.
+// Example: 2348012345678
+
+const products = [
+  {
+    id:1,
+    name:"Elegant Women's Outfit",
+    price:25000,
+    image:"https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:2,
+    name:"Luxury Fashion Dress",
+    price:32000,
+    image:"https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:3,
+    name:"Classic Fashion Look",
+    price:18000,
+    image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:4,
+    name:"Stylish Handbag",
+    price:22000,
+    image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:5,
+    name:"Modern Ladies Outfit",
+    price:28000,
+    image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80"
+  },
+  {
+    id:6,
+    name:"Elegant Accessories",
+    price:12000,
+    image:"https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80"
+  }
+];
+
+let cart = [];
+
+function formatPrice(amount) {
+  return "₦" + amount.toLocaleString("en-NG");
+}
+
+function displayProducts() {
+  const list = document.getElementById("product-list");
+
+  list.innerHTML = products.map(product => `
+    <div class="product">
+      <img src="${product.image}" alt="${product.name}" loading="lazy">
+      <div class="product-info">
+        <h3>${product.name}</h3>
+        <div class="price">${formatPrice(product.price)}</div>
+        <button class="add-btn" onclick="addToCart(${product.id})">
+          ADD TO CART
+        </button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  const existing = cart.find(item => item.id === id);
+
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({...product, quantity:1});
+  }
+
+  updateCart();
+}
+
+function updateCart() {
+  const count = cart.reduce((sum,item) => sum + item.quantity,0);
+
+  document.getElementById("cart-count").textContent = count;
+
+  document.getElementById("cart-items").innerHTML =
+    cart.length ? cart.map(item => `
+      <div class="cart-item">
+        <div>
+          <strong>${item.name}</strong><br>
+          ${formatPrice(item.price)} × ${item.quantity}
+        </div>
+        <button onclick="removeItem(${item.id})">Remove</button>
+      </div>
+    `).join("") : "<p>Your cart is empty.</p>";
+
+  const total = cart.reduce(
+    (sum,item) => sum + item.price * item.quantity,0
+  );
+
+  document.getElementById("cart-total").textContent =
+    "Total: " + formatPrice(total);
+}
+
+function removeItem(id) {
+  cart = cart.filter(item => item.id !== id);
+  updateCart();
+}
+
+function toggleCart() {
+  document.getElementById("cart-panel").classList.toggle("open");
+  document.getElementById("overlay").classList.toggle("show");
+}
+
+function checkout() {
+  if (!cart.length) {
+    alert("Your cart is empty. Please add a product first.");
+    return;
+  }
+
+  if (!/^234\d{10}$/.test(WHATSAPP_NUMBER)) {
+    alert("Please enter your correct WhatsApp number in the website code first.");
+    return;
+  }
+
+  let message = "Hello DELVIN GLAMOUR! I want to place an order:\n\n";
+
+  cart.forEach(item => {
+    message += `${item.name} x ${item.quantity} - ${formatPrice(item.price * item.quantity)}\n`;
+  });
+
+  const total = cart.reduce(
+    (sum,item) => sum + item.price * item.quantity,0
+  );
+
+  message += `\nTotal: ${formatPrice(total)}`;
+  message += "\n\nPlease provide payment and delivery details.";
+
+  const url = "https://wa.me/" + WHATSAPP_NUMBER +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(url,"_blank");
+}
+
+displayProducts();
+updateCart();
+</script>
+
+</body>
+</html>
