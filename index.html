@@ -42,7 +42,7 @@ button,a {font:inherit;}
 button {cursor:pointer;}
 img {max-width:100%;}
 
-/* WELCOME SCREEN */
+/* WELCOME SCREEN - IMAGE ONLY */
 
 .welcome-screen {
   position:fixed;
@@ -68,24 +68,6 @@ img {max-width:100%;}
   height:100%;
   object-fit:cover;
   display:block;
-}
-
-.welcome-fallback {
-  text-align:center;
-  padding:25px;
-  color:var(--cream);
-}
-
-.welcome-fallback h1 {
-  font-family:'Playfair Display',serif;
-  color:var(--gold);
-  font-size:clamp(35px,8vw,65px);
-  letter-spacing:3px;
-}
-
-.welcome-fallback p {
-  margin-top:18px;
-  letter-spacing:3px;
 }
 
 /* HEADER */
@@ -194,8 +176,6 @@ nav a:hover {color:var(--gold);}
 }
 
 .hero-content {max-width:570px;}
-
-/* REDUCED LOGO SIZE */
 
 .hero-logo {
   width:95px;
@@ -613,7 +593,7 @@ footer h2 {
 
 <body class="no-scroll">
 
-<!-- WELCOME SCREEN: SHOWS FOR 5 SECONDS -->
+<!-- WELCOME SCREEN: IMAGE ONLY FOR 5 SECONDS -->
 
 <div class="welcome-screen" id="welcome-screen">
   <img
@@ -621,10 +601,6 @@ footer h2 {
     alt="Welcome to Delvin Glamour"
     id="welcome-image"
   >
-  <div class="welcome-fallback" id="welcome-fallback" style="display:none;">
-    <h1>DELVIN GLAMOUR</h1>
-    <p>Your beauty,our concern</p>
-  </div>
 </div>
 
 <!-- HEADER -->
@@ -810,10 +786,7 @@ footer h2 {
 
 const WHATSAPP_NUMBER = "2348107171050";
 
-/* PRODUCT CATALOGUES
-   Every image is stored inside the images folder.
-   Each filename is written individually.
-*/
+/* PRODUCT CATALOGUES */
 
 const catalogues = {
 
@@ -1031,7 +1004,7 @@ const catalogues = {
 
 };
 
-/* COMBINE ALL PRODUCTS FOR THE CART */
+/* COMBINE ALL PRODUCTS */
 
 const allProducts = [
   ...catalogues.wigs,
@@ -1047,20 +1020,18 @@ function formatPrice(amount) {
   return "₦" + amount.toLocaleString("en-NG");
 }
 
-/* WELCOME SCREEN */
-
-const welcomeImage = document.getElementById("welcome-image");
-
-welcomeImage.addEventListener("error", function() {
-  welcomeImage.style.display = "none";
-  document.getElementById("welcome-fallback").style.display = "block";
-});
+/* WELCOME SCREEN - IMAGE ONLY FOR 5 SECONDS */
 
 window.addEventListener("load", function() {
+
   setTimeout(function() {
+
     document.getElementById("welcome-screen").classList.add("hide");
+
     document.body.classList.remove("no-scroll");
+
   }, 5000);
+
 });
 
 /* DISPLAY EACH CATALOGUE */
@@ -1106,9 +1077,19 @@ function initializeCatalogues() {
   displayCatalogue("lashes");
 }
 
-/* OPEN A CATEGORY */
+/* OPEN A CATEGORY AND SAVE PAGE IN URL */
 
-function openCategory(category) {
+function openCategory(category, updateUrl = true) {
+
+  if (!catalogues[category]) return;
+
+  if (updateUrl) {
+    history.pushState(
+      {page: category},
+      "",
+      "#" + category
+    );
+  }
 
   document.getElementById("homepage").style.display = "none";
 
@@ -1127,7 +1108,15 @@ function openCategory(category) {
 
 /* RETURN TO HOMEPAGE */
 
-function showHome() {
+function showHome(updateUrl = true) {
+
+  if (updateUrl) {
+    history.pushState(
+      {page:"home"},
+      "",
+      window.location.pathname + window.location.search
+    );
+  }
 
   document.querySelectorAll(".catalogue-page").forEach(page => {
     page.classList.remove("active");
@@ -1137,6 +1126,27 @@ function showHome() {
 
   window.scrollTo({top:0,behavior:"smooth"});
 }
+
+/* RESTORE THE CORRECT PAGE AFTER REFRESH */
+
+function restorePage() {
+
+  const page = window.location.hash
+    .replace("#","")
+    .toLowerCase();
+
+  if (catalogues[page]) {
+    openCategory(page, false);
+  } else {
+    showHome(false);
+  }
+
+}
+
+/* SUPPORT BROWSER BACK AND FORWARD BUTTONS */
+
+window.addEventListener("popstate", restorePage);
+window.addEventListener("hashchange", restorePage);
 
 /* ADD TO CART */
 
@@ -1171,12 +1181,14 @@ function updateCart() {
   const cartItems = document.getElementById("cart-items");
 
   if (!cart.length) {
+
     cartItems.innerHTML = `
       <div class="empty-cart">
         <p>Your shopping cart is empty.</p>
         <p>Add your favourite products to get started.</p>
       </div>
     `;
+
   } else {
 
     cartItems.innerHTML = cart.map(item => `
@@ -1265,9 +1277,11 @@ function checkout() {
     "Hello DELVIN GLAMOUR! I would like to place an order:\n\n";
 
   cart.forEach(item => {
+
     message +=
       item.name + " x " + item.quantity +
       " - " + formatPrice(item.price * item.quantity) + "\n";
+
   });
 
   const total = cart.reduce(
@@ -1287,7 +1301,12 @@ function checkout() {
 /* INITIALIZE WEBSITE */
 
 initializeCatalogues();
+
 updateCart();
+
+/* RESTORE LAST CATALOGUE OR HOMEPAGE */
+
+restorePage();
 
 </script>
 
