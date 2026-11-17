@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,7 @@
 <meta name="theme-color" content="#171012">
 
 <title>DELVIN GLAMOUR | Luxury Hair & Wigs</title>
-<meta name="description" content="Discover beautiful luxury human hair wigs, bone straight, body wave, deep wave, curly wigs and hair extensions at Delvin Glamour.">
+<meta name="description" content="Discover beautiful luxury human hair wigs and premium hair extensions at Delvin Glamour.">
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
@@ -76,19 +77,45 @@ nav a:hover {color:var(--gold);}
   cursor:pointer;
 }
 
+/* HOMEPAGE HERO */
+
 .hero {
-  min-height:570px;
+  min-height:620px;
   display:flex;
   align-items:center;
-  padding:70px 8%;
+  padding:65px 8%;
   background:
-    linear-gradient(90deg,rgba(15,8,10,.88),rgba(15,8,10,.2)),
+    linear-gradient(90deg,rgba(15,8,10,.90),rgba(15,8,10,.25)),
     url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1800&q=85')
     center 35%/cover;
   color:white;
 }
 
-.hero-content {max-width:550px;}
+.hero-content {
+  max-width:550px;
+}
+
+/* NEW CIRCULAR GOLD IMAGE */
+
+.hero-logo {
+  width:145px;
+  height:145px;
+  border-radius:50%;
+  border:4px solid var(--gold);
+  padding:5px;
+  margin-bottom:25px;
+  overflow:hidden;
+  background:var(--black);
+  box-shadow:0 0 25px rgba(198,164,119,.35);
+}
+
+.hero-logo img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  display:block;
+}
 
 .hero small {
   color:var(--gold);
@@ -148,6 +175,8 @@ nav a:hover {color:var(--gold);}
   color:#777;
 }
 
+/* COLLECTIONS */
+
 .categories {
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -188,6 +217,8 @@ nav a:hover {color:var(--gold);}
   font-size:26px;
   z-index:2;
 }
+
+/* PRODUCTS */
 
 .products {
   display:grid;
@@ -248,6 +279,8 @@ nav a:hover {color:var(--gold);}
 
 .add-btn:hover {background:var(--red);}
 
+/* ABOUT */
+
 .about {
   background:var(--black);
   color:white;
@@ -263,6 +296,8 @@ nav a:hover {color:var(--gold);}
 
 .about .section-heading small {color:var(--gold);}
 
+/* FOOTER */
+
 footer {
   background:#100b0d;
   color:white;
@@ -272,6 +307,8 @@ footer {
 }
 
 footer span {color:var(--gold);}
+
+/* SHOPPING CART */
 
 .cart-panel {
   position:fixed;
@@ -348,16 +385,41 @@ footer span {color:var(--gold);}
 
 .overlay.show {display:block;}
 
+/* MOBILE RESPONSIVENESS */
+
 @media(max-width:750px) {
   header {padding:15px 5%;}
   .logo {font-size:19px;}
   nav {gap:12px;}
   nav a {font-size:11px;}
-  .hero {min-height:500px;padding:55px 7%;}
-  .categories {grid-template-columns:repeat(2,1fr);gap:12px;}
+
+  .hero {
+    min-height:550px;
+    padding:55px 7%;
+  }
+
+  .hero-logo {
+    width:125px;
+    height:125px;
+  }
+
+  .categories {
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
   .category {height:220px;}
-  .category h3 {font-size:20px;left:12px;}
-  .products {grid-template-columns:repeat(2,1fr);gap:12px;}
+
+  .category h3 {
+    font-size:20px;
+    left:12px;
+  }
+
+  .products {
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
   .product img {height:210px;}
   .product-info {padding:12px;}
   .product-info h3 {font-size:16px;}
@@ -389,10 +451,20 @@ footer span {color:var(--gold);}
   </nav>
 </header>
 
-<!-- HERO SECTION -->
+<!-- HOMEPAGE -->
 
 <section class="hero" id="home">
+
   <div class="hero-content">
+
+    <!-- NEW CIRCULAR IMAGE -->
+    <div class="hero-logo">
+      <img
+        src="images/a3168f61b1ba49c79a2bbc7acf50015a(1).jpg"
+        alt="Delvin Glamour brand image"
+      >
+    </div>
+
     <small>WELCOME TO DELVIN GLAMOUR</small>
 
     <h1>Luxury Hair. Timeless Beauty.</h1>
@@ -404,6 +476,7 @@ footer span {color:var(--gold);}
     </p>
 
     <a href="#shop" class="primary-btn">SHOP OUR WIGS</a>
+
   </div>
 </section>
 
@@ -530,12 +603,10 @@ footer span {color:var(--gold);}
 
 <script>
 
-// YOUR WHATSAPP NUMBER
-// International format: Nigeria country code 234
+// WHATSAPP NUMBER
 const WHATSAPP_NUMBER = "2348107171050";
 
-// ALL 10 DELVIN GLAMOUR PRODUCTS
-// Image filenames must match the files uploaded into the images folder.
+// ALL 12 DELVIN GLAMOUR PRODUCTS
 
 const products = [
 
@@ -544,7 +615,7 @@ const products = [
     name:"Premium Body Wave Lace Front Wig",
     description:"Luxurious, voluminous natural black body wave wig with a pre-plucked hairline and transparent lace.",
     price:95000,
-    image:"images/Screenshot_20261117-101011.jpg"
+    image:"images/IMG-20261117-WA0001.jpg"
   },
 
   {
@@ -552,7 +623,7 @@ const products = [
     name:"Deep Wave Human Hair Bundles",
     description:"Five beautiful bundles of raw-style human hair with gorgeous deep and water wave curls.",
     price:75000,
-    image:"images/Screenshot_20261117-1010010.jpg"
+    image:"images/IMG-20261117-WA0002.jpg"
   },
 
   {
@@ -560,7 +631,7 @@ const products = [
     name:"Luxury Body Wave Wig",
     description:"Elegant middle-part body wave human hair with soft S-shaped curls for a beautiful finish.",
     price:65000,
-    image:"images/Screenshot_20261117-101007.jpg"
+    image:"images/IMG-20261117-WA0003.jpg"
   },
 
   {
@@ -568,7 +639,7 @@ const products = [
     name:"Premium Bone Straight Hair Bundles",
     description:"Three sleek, silky and high-luster bone straight hair bundles for a smooth hairstyle.",
     price:78000,
-    image:"images/Screenshot_20261117-101009.jpg"
+    image:"images/IMG-20261117-WA0004.jpg"
   },
 
   {
@@ -576,7 +647,7 @@ const products = [
     name:"13x4 Straight Lace Front Wig",
     description:"Long silky straight human hair with a 13x4 lace frontal, deep parting space and pre-plucked hairline.",
     price:120000,
-    image:"images/Screenshot_20261117-101006.jpg"
+    image:"images/IMG-20261117-WA0005.jpg"
   },
 
   {
@@ -584,7 +655,7 @@ const products = [
     name:"Deep Wave Curly Human Hair Wig",
     description:"Beautiful high-density natural black deep and water wave curls for a full, glamorous look.",
     price:105000,
-    image:"images/Screenshot_20261117-101008.jpg"
+    image:"images/IMG-20261117-WA0006.jpg"
   },
 
   {
@@ -592,7 +663,7 @@ const products = [
     name:"Premium Bone Straight Wig",
     description:"Long, smooth middle-part bone straight human hair with a matching sleek finish.",
     price:85000,
-    image:"images/Screenshot_20261117-101005.jpg"
+    image:"images/IMG-20261117-WA0007.jpg"
   },
 
   {
@@ -600,7 +671,7 @@ const products = [
     name:"Luxury Body Wave Lace Wig",
     description:"Beautiful body wave lace wig with a stylish finish, soft waves and custom baby hairs.",
     price:56000,
-    image:"images/Screenshot_20261117-101001.jpg"
+    image:"images/IMG-20261117-WA0008.jpg"
   },
 
   {
@@ -608,7 +679,7 @@ const products = [
     name:"Custom Body Wave Lace Front Wig",
     description:"Gorgeous body wave lace front wig with a natural-looking hairline and beautifully styled baby hairs.",
     price:90000,
-    image:"images/Screenshot_20261117-101000.jpg"
+    image:"images/IMG-20261117-WA0009.jpg"
   },
 
   {
@@ -616,7 +687,23 @@ const products = [
     name:"Water Wave Curly Human Hair Wig",
     description:"Full-frontal tight water wave and deep wave curls for a bold, beautiful and glamorous appearance.",
     price:88000,
-    image:"images/Screenshot_20261117-101003.jpg"
+    image:"images/IMG-20261117-WA0010.jpg"
+  },
+
+  {
+    id:11,
+    name:"Premium Luxury Human Hair Wig",
+    description:"A beautiful premium hair collection designed for a stylish, elegant and glamorous appearance.",
+    price:56000,
+    image:"images/IMG-20261117-WA0011.jpg"
+  },
+
+  {
+    id:12,
+    name:"Exclusive Luxury Hair Collection",
+    description:"Discover another beautiful addition to the Delvin Glamour premium hair collection.",
+    price:59000,
+    image:"images/IMG-20261117-WA0012.jpg"
   }
 
 ];
@@ -627,7 +714,7 @@ function formatPrice(amount) {
   return "₦" + amount.toLocaleString("en-NG");
 }
 
-// DISPLAY ALL 10 PRODUCTS
+// DISPLAY PRODUCTS
 
 function displayProducts() {
 
@@ -684,7 +771,6 @@ function addToCart(id) {
 
   updateCart();
 
-  // Open the cart after adding a product
   document.getElementById("cart-panel").classList.add("open");
   document.getElementById("overlay").classList.add("show");
 
